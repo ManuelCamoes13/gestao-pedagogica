@@ -1,6 +1,16 @@
 <template>
   <div class="tables-basic">
+    <b-row>
+      <b-col>
     <h2 class="page-title"><span class="fw-semi-bold">Coordenadores</span></h2>
+    </b-col>
+    <b-col>
+      <div class="d-flex">
+              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Novo</b-button>
+              
+            </div>
+            </b-col>
+            </b-row>
     <b-row>
       <b-col>
         <Widget
@@ -11,10 +21,7 @@
             
              <div class="messageTableHeader">
     <div>
-  <div class="float-left">
-              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Novo</b-button>
-              
-            </div>
+
     </div>
     <b-form-input placeholder="Procurar" size="sm" @input="search" />
   </div>
@@ -23,26 +30,26 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th class="hidden-sm-down">#</th>
                   <!-- <th>Contador</th> -->
                   <th class="hidden-sm-down">Nome</th>
                   <th class="hidden-sm-down">apelido</th>
                   <th class="hidden-sm-down">Telefone</th>
                   <th class="hidden-sm-down">email</th>
-                  <th class="hidden-sm-down">Senha</th>
                 </tr>
               </thead>
               <tbody>
-                <tr >
-                  <td></td>
+                <tr v-for="coordenador in coordenadores"
+                 :key="coordenador.id">
+                  <td> {{coordenador.nome}}</td>
                   <td class="text-semi-muted">
+                    {{coordenador.apelido}}
                   </td>
                   <td>
-                    
+                    {{coordenador.telefone}}
                   </td>
                   
                   <td>
-                   
+                   {{coordenador.email}}
                   </td>
                   <td>
                   
@@ -193,16 +200,13 @@ export default {
           "authorization": token,
         },
       };
-      this.loading = true;
       setTimeout(function () {
-        this.loading = false;
       }, 1000);
       http
         .get("/cord", config)
         .then((result) => {
-          this.loading = false;
           this.coordenadores = result.data.data;
-          console.log(result.data);
+          console.log(result.data.data);
           console.log("000000000000000000000000000000000")
         })
         .catch((error) => {
