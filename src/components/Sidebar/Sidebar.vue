@@ -6,7 +6,7 @@
         @mouseleave="sidebarMouseLeave"
     >
       <header class="logo">
-        <router-link to="/app/main/analytics"><span class="primary-word ml-3"><i class="fa fa-tint fa-lg"></i></span> <span class="secondary-word"> M-bills</span></router-link>
+        <router-link to="/app/main/analytics"><span class="primary-word ml-3"><i class="fad fa-user-graduate"></i></span> <span class="secondary-word">   Gestão Ped.</span></router-link>
       </header>
       <!-- <h5 class="navTitle first">
         APP
@@ -26,12 +26,12 @@
 
         <NavLink
             :activeItem="activeItem"
-            header="Clientes"
+            header="Coordenadores"
             link="/app/client"
             iconName="fi flaticon-grid"
             index="client"
                 :childrenLinks="[
-          { header: 'Individuais', link: '/app/client/individual' },
+          { header: 'Lista', link: '/app/client/individual' },
           { header: 'Instituicao', link: '/app/client/company' },
         ]"
         />
