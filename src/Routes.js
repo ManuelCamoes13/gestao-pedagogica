@@ -3,24 +3,24 @@ import Router from 'vue-router';
 
 import Layout from '@/components/Layout/Layout';
 // Core
-import TypographyPage from '@/pages/Core/Typography/Typography';
-import ColorsPage from '@/pages/Core/Colors/Colors';
-import CoreGridPage from '@/pages/Core/Grid/Grid';
-// Tables
-import TablesBasicPage from '@/pages/Tables/Basic/Basic';
-import TablesDynamicPage from '@/pages/Tables/Dynamic/Dynamic';
-// Maps
-import GoogleMapPage from '@/pages/Maps/Google/Google';
-import AmchartsMapPage from '@/pages/Maps/Amcharts/Amcharts';
+// import TypographyPage from '@/pages/Core/Typography/Typography';
+// import ColorsPage from '@/pages/Core/Colors/Colors';
+// import CoreGridPage from '@/pages/Core/Grid/Grid';
+// // Tables
+// import TablesBasicPage from '@/pages/Tables/Basic/Basic';
+// import TablesDynamicPage from '@/pages/Tables/Dynamic/Dynamic';
+// // Maps
+// import GoogleMapPage from '@/pages/Maps/Google/Google';
+// import AmchartsMapPage from '@/pages/Maps/Amcharts/Amcharts';
 // Main
 import VisitsPage from '@/pages/Visits/Visits';
 import AnalyticsPage from '@/pages/Dashboard/Dashboard';
 import WidgetsPage from '@/pages/Widgets/Widgets';
 // Charts
-import ChartsPage from '@/pages/Charts/Charts';
-import ApexPage from '@/pages/Charts/Apex/Apex';
-import EchartsPage from '@/pages/Charts/Echarts/Echarts';
-import HighchartsPage from '@/pages/Charts/Highcharts/Highcharts';
+// import ChartsPage from '@/pages/Charts/Charts';
+// import ApexPage from '@/pages/Charts/Apex/Apex';
+// import EchartsPage from '@/pages/Charts/Echarts/Echarts';
+// import HighchartsPage from '@/pages/Charts/Highcharts/Highcharts';
 
 //Clientes
 import ClientIndividualPage from '@/pages/Client/Individual/Individual';
@@ -32,26 +32,26 @@ import ProfilePage from '@/pages/Profile/Profile';
 // Profile
 import PackagePage from '@/pages/Package/Package';
 // Chat
-import ChatPage from '@/pages/Chat/Chat';
+// import ChatPage from '@/pages/Chat/Chat';
 // Email
-import EmailPage from '@/pages/Email/Email';
+// import EmailPage from '@/pages/Email/Email';
 // Ecommerce
-import ProductsManagement from '@/pages/Ecommerce/Management/Management';
-import ProductEdit from '@/pages/Ecommerce/Management/components/ProductEdit/ProductEdit';
-import ProductsPage from '@/pages/Ecommerce/ProductsGrid/ProductsGrid';
-import ProductPage from '@/pages/Ecommerce/ProductPage/ProductPage';
+// import ProductsManagement from '@/pages/Ecommerce/Management/Management';
+// import ProductEdit from '@/pages/Ecommerce/Management/components/ProductEdit/ProductEdit';
+// import ProductsPage from '@/pages/Ecommerce/ProductsGrid/ProductsGrid';
+// import ProductPage from '@/pages/Ecommerce/ProductPage/ProductPage';
 // Grid
-import GridPagePage from '@/pages/Grid/Grid';
+// import GridPagePage from '@/pages/Grid/Grid';
 // Forms
-import FormElementsPage from '@/pages/Forms/Elements/Elements';
-import FormValidationPage from '@/pages/Forms/Validation/Validation';
-import FormWizardPage from '@/pages/Forms/Wizard/Wizard';
+// import FormElementsPage from '@/pages/Forms/Elements/Elements';
+// import FormValidationPage from '@/pages/Forms/Validation/Validation';
+// import FormWizardPage from '@/pages/Forms/Wizard/Wizard';
 // Extra
-import CalendarPage from '@/pages/Extra/Calendar/Calendar';
-import InvoicePage from '@/pages/Extra/Invoice/Invoice';
-import SearchPage from '@/pages/Extra/Search/Search';
-import TimelinePage from '@/pages/Extra/Timeline/Timeline';
-import GalleryPage from '@/pages/Extra/Gallery/Gallery';
+// import CalendarPage from '@/pages/Extra/Calendar/Calendar';
+// import InvoicePage from '@/pages/Extra/Invoice/Invoice';
+// import SearchPage from '@/pages/Extra/Search/Search';
+// import TimelinePage from '@/pages/Extra/Timeline/Timeline';
+// import GalleryPage from '@/pages/Extra/Gallery/Gallery';
 // import Login from '@/pages/Login/Login';
 import LoginExample from '@/pages/Extra/LoginExample/LoginExample';
 // import Register from '@/pages/Register/Register';
