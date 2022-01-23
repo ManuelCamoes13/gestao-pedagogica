@@ -73,11 +73,11 @@
             <img
                 src=""
             />
-           M
+          <i class="far fa-user"></i>
           </span>
-          <!-- <span>{{user.name || user.email || 'Philip smith'}}</span>
-          <span class="ml-2 mr-2 circle badge-dark text-white fw-bold" style="padding: 13px 13px;">9</span>
-          <i class='fi flaticon-arrow-down px-2' /> -->
+          <span> {{user.nome}}</span>
+          <!-- <span class="ml-2 mr-2 circle badge-dark text-white fw-bold" style="padding: 13px 13px;">9</span> -->
+          <i class='fi flaticon-arrow-down px-2' />
         </template>
         <b-dropdown-item><i class='fi flaticon-person px-3 mr-3' /> Minha Conta</b-dropdown-item>
         <b-dropdown-divider />
@@ -103,20 +103,35 @@ import Notifications from '@/components/Notifications/Notifications';
 export default {
   name: 'Header',
   components: { Notifications },
-  data() {
+    data() {
     return {
       avatarImage,
-      user: JSON.parse(localStorage.getItem('user') || {})
+      user: localStorage.getItem('user') || {},
+      name:'',
     }
   },
- 
+  computed: {
+    ...mapState('layout', [
+      'sidebarClose',
+      'sidebarStatic',
+      'navbarType',
+      'navbarColorScheme'
+    ]),
+    firstUserLetter() { return (this.user.name || this.user.email || "P")[0].toUpperCase(); },
+    navbarTypeClass: function () {
+      return "navbar-" + this.navbarType + "-type"
+    }
+  },
+  mounted(){
+    this.getCurrentUser()
+    this.getUser()
+  },
   methods: {
     ...mapActions('layout', [
       'toggleSidebar',
       'switchSidebar',
       'changeSidebarActive',
     ]),
-    ...mapActions('auth', ['logoutUser']),
     switchSidebarMethod() {
       if (!this.sidebarClose) {
         this.switchSidebar(true);
@@ -138,8 +153,38 @@ export default {
         paths.pop();
         this.changeSidebarActive(paths.join('/'));
       }
+    },
+    getCurrentUser(){
+      let authUser = localStorage.getItem('user');
+      var authUserObject = JSON.parse(authUser);
+      let nome   = authUserObject.nome;
+      let userId = authUserObject.id;
+      console.log("okokokko" + authUserObject.id)
+       this.nome = nome.slice(0,1).toUpperCase();
+    },
+    logout(){
+       this.$swal.fire({
+                  title: 'Deseja Sair?',
+                  icon: 'question',
+                  showCancelButton: true,
+                  confirmButtonColor: '#0dd9d0',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'SIM',
+                  cancelButtonText: 'NÃO'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      localStorage.removeItem('token');
+                      localStorage.removeItem('user');
+                      this.$router.push('/login/secret')
+                  }
+
+            })
+    },
+     getUser(){
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
   }
+
 };
 </script>
 
