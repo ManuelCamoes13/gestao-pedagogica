@@ -57,39 +57,39 @@ import LoginExample from '@/pages/Extra/LoginExample/LoginExample';
 // import Register from '@/pages/Register/Register';
 import ErrorPage from '@/pages/Error/Error';
 // Ui
-import AlertsPage from '@/pages/Ui/Alerts/Alerts';
-import BadgePage from '@/pages/Ui/Badge/Badge';
-import ButtonsPage from '@/pages/Ui/Buttons/Buttons';
-import CardPage from '@/pages/Ui/Card/Card';
-import CarouselPage from '@/pages/Ui/Carousel/Carousel';
-import IconsPage from '@/pages/Ui/Icons/Icons';
-import JumbotronPage from '@/pages/Ui/Jumbotron/Jumbotron';
-import ListGroupsPage from '@/pages/Ui/ListGroups/ListGroups';
-import ModalPage from '@/pages/Ui/Modal/Modal';
-import NavPage from '@/pages/Ui/Nav/Nav';
-import NavbarPage from '@/pages/Ui/Navbar/Navbar';
-import NotificationsPage from '@/pages/Ui/Notifications/Notifications';
-import PopoversPage from '@/pages/Ui/Popovers/Popovers';
-import ProgressPage from '@/pages/Ui/Progress/Progress';
-import TabsPage from '@/pages/Ui/Tabs/Tabs';
+// import AlertsPage from '@/pages/Ui/Alerts/Alerts';
+// import BadgePage from '@/pages/Ui/Badge/Badge';
+// import ButtonsPage from '@/pages/Ui/Buttons/Buttons';
+// import CardPage from '@/pages/Ui/Card/Card';
+// import CarouselPage from '@/pages/Ui/Carousel/Carousel';
+// import IconsPage from '@/pages/Ui/Icons/Icons';
+// import JumbotronPage from '@/pages/Ui/Jumbotron/Jumbotron';
+// import ListGroupsPage from '@/pages/Ui/ListGroups/ListGroups';
+// import ModalPage from '@/pages/Ui/Modal/Modal';
+// import NavPage from '@/pages/Ui/Nav/Nav';
+// import NavbarPage from '@/pages/Ui/Navbar/Navbar';
+// import NotificationsPage from '@/pages/Ui/Notifications/Notifications';
+// import PopoversPage from '@/pages/Ui/Popovers/Popovers';
+// import ProgressPage from '@/pages/Ui/Progress/Progress';
+// import TabsPage from '@/pages/Ui/Tabs/Tabs';
 
-import Documentation from '@/documentation/DocumentationLayout';
-import DocLicensesPage from '@/documentation/pages/getting-started/Licenses';
-import DocQuickStartPage from '@/documentation/pages/getting-started/QuickStart';
-import DocOverviewPage from '@/documentation/pages/getting-started/Overview';
-import DocLibsPage from '@/documentation/pages/Libs';
-import DocPagesPage from '@/documentation/pages/Pages';
-import DocAlertsPage from '@/documentation/pages/components/Alerts';
-import DocBadgePage from '@/documentation/pages/components/Badge';
-import DocButtonsPage from '@/documentation/pages/components/Buttons';
-import DocCardPage from '@/documentation/pages/components/Card';
-import DocCarouselPage from '@/documentation/pages/components/Carousel';
-import DocModalPage from '@/documentation/pages/components/Modal';
-import DocNavPage from '@/documentation/pages/components/Nav';
-import DocNavbarPage from '@/documentation/pages/components/Navbar';
-import DocPopoversPage from '@/documentation/pages/components/Popovers';
-import DocProgressPage from '@/documentation/pages/components/Progress';
-import DocTabsPage from '@/documentation/pages/components/Tabs';
+// import Documentation from '@/documentation/DocumentationLayout';
+// import DocLicensesPage from '@/documentation/pages/getting-started/Licenses';
+// import DocQuickStartPage from '@/documentation/pages/getting-started/QuickStart';
+// import DocOverviewPage from '@/documentation/pages/getting-started/Overview';
+// import DocLibsPage from '@/documentation/pages/Libs';
+// import DocPagesPage from '@/documentation/pages/Pages';
+// import DocAlertsPage from '@/documentation/pages/components/Alerts';
+// import DocBadgePage from '@/documentation/pages/components/Badge';
+// import DocButtonsPage from '@/documentation/pages/components/Buttons';
+// import DocCardPage from '@/documentation/pages/components/Card';
+// import DocCarouselPage from '@/documentation/pages/components/Carousel';
+// import DocModalPage from '@/documentation/pages/components/Modal';
+// import DocNavPage from '@/documentation/pages/components/Nav';
+// import DocNavbarPage from '@/documentation/pages/components/Navbar';
+// import DocPopoversPage from '@/documentation/pages/components/Popovers';
+// import DocProgressPage from '@/documentation/pages/components/Progress';
+// import DocTabsPage from '@/documentation/pages/components/Tabs';
 // Auth
 import Login from '@/pages/Auth/Login/Login';
 import Register from '@/pages/Auth/Register/Register';
@@ -124,93 +124,93 @@ export default new Router({
       name: 'Error',
       component: ErrorPage,
     },
-    {
-      path: '/documentation',
-      name: 'Documentation',
-      component: Documentation,
-      children: [
-        {
-          path: 'getting-started/overview',
-          name: 'Overview',
-          component: DocOverviewPage,
-        },
-        {
-          path: 'getting-started/licenses',
-          name: 'Licenses',
-          component: DocLicensesPage,
-        },
-        {
-          path: 'getting-started/quick-start',
-          name: 'QuickStart',
-          component: DocQuickStartPage,
-        },
-        {
-          path: 'components/alerts',
-          name: 'Alerts',
-          component: DocAlertsPage,
-        },
-        {
-          path: 'components/badge',
-          name: 'Badge',
-          component: DocBadgePage,
-        },
-        {
-          path: 'components/buttons',
-          name: 'Buttons',
-          component: DocButtonsPage,
-        },
-        {
-          path: 'components/card',
-          name: 'Card',
-          component: DocCardPage,
-        },
-        {
-          path: 'components/carousel',
-          name: 'Carousel',
-          component: DocCarouselPage,
-        },
-        {
-          path: 'components/modal',
-          name: 'Modal',
-          component: DocModalPage,
-        },
-        {
-          path: 'components/nav',
-          name: 'Nav',
-          component: DocNavPage,
-        },
-        {
-          path: 'components/navbar',
-          name: 'Navbar',
-          component: DocNavbarPage,
-        },
-        {
-          path: 'components/popovers',
-          name: 'Popovers',
-          component: DocPopoversPage,
-        },
-        {
-          path: 'components/progress',
-          name: 'Progress',
-          component: DocProgressPage,
-        },
-        {
-          path: 'components/tabs',
-          name: 'Tabs',
-          component: DocTabsPage,
-        },
-        {
-          path: 'libs',
-          name: 'Libs',
-          component: DocLibsPage,
-        },
-        {
-          path: 'pages',
-          name: 'Pages',
-          component: DocPagesPage,
-        }
-      ]
-    },
+    // {
+    //   path: '/documentation',
+    //   name: 'Documentation',
+    //   component: Documentation,
+    //   children: [
+    //     {
+    //       path: 'getting-started/overview',
+    //       name: 'Overview',
+    //       component: DocOverviewPage,
+    //     },
+    //     {
+    //       path: 'getting-started/licenses',
+    //       name: 'Licenses',
+    //       component: DocLicensesPage,
+    //     },
+    //     {
+    //       path: 'getting-started/quick-start',
+    //       name: 'QuickStart',
+    //       component: DocQuickStartPage,
+    //     },
+    //     {
+    //       path: 'components/alerts',
+    //       name: 'Alerts',
+    //       component: DocAlertsPage,
+    //     },
+    //     {
+    //       path: 'components/badge',
+    //       name: 'Badge',
+    //       component: DocBadgePage,
+    //     },
+    //     {
+    //       path: 'components/buttons',
+    //       name: 'Buttons',
+    //       component: DocButtonsPage,
+    //     },
+    //     {
+    //       path: 'components/card',
+    //       name: 'Card',
+    //       component: DocCardPage,
+    //     },
+    //     {
+    //       path: 'components/carousel',
+    //       name: 'Carousel',
+    //       component: DocCarouselPage,
+    //     },
+    //     {
+    //       path: 'components/modal',
+    //       name: 'Modal',
+    //       component: DocModalPage,
+    //     },
+    //     {
+    //       path: 'components/nav',
+    //       name: 'Nav',
+    //       component: DocNavPage,
+    //     },
+    //     {
+    //       path: 'components/navbar',
+    //       name: 'Navbar',
+    //       component: DocNavbarPage,
+    //     },
+    //     {
+    //       path: 'components/popovers',
+    //       name: 'Popovers',
+    //       component: DocPopoversPage,
+    //     },
+    //     {
+    //       path: 'components/progress',
+    //       name: 'Progress',
+    //       component: DocProgressPage,
+    //     },
+    //     {
+    //       path: 'components/tabs',
+    //       name: 'Tabs',
+    //       component: DocTabsPage,
+    //     },
+    //     {
+    //       path: 'libs',
+    //       name: 'Libs',
+    //       component: DocLibsPage,
+    //     },
+    //     {
+    //       path: 'pages',
+    //       name: 'Pages',
+    //       component: DocPagesPage,
+    //     }
+    //   ]
+    // },
     {
       path: '/app',
       name: 'Layout',
@@ -268,237 +268,237 @@ export default new Router({
           component: PackagePage,
         },
         // Chat page
-        {
-          path: 'chat',
-          name: 'ChatPage',
-          component: ChatPage,
-        },
-        // profile page
-        {
-          path: 'profile',
-          name: 'ProfilePage',
-          component: ProfilePage,
-        },
-        // email page
-        {
-          path: 'email',
-          name: 'EmailPage',
-          component: EmailPage,
-        },
-        // ecommerce pages
-        {
-          path: 'ecommerce/management',
-          name: 'ProductsManagement',
-          component: ProductsManagement,
-        },
-        {
-          path: 'ecommerce/management/:id',
-          name: 'ProductEdit',
-          component: ProductEdit,
-        },
-        {
-          path: 'ecommerce/management/create',
-          name: 'ProductCreate',
-          component: ProductEdit,
-        },
-        {
-          path: 'ecommerce/products',
-          name: 'ProductsPage',
-          component: ProductsPage,
-        },
-        {
-          path: 'ecommerce/product',
-          name: 'ProductPage',
-          component: ProductPage,
-        },
-        {
-          path: 'ecommerce/product/:id',
-          name: 'DefiniteProductPage',
-          component: ProductPage,
-        },
-        // core pages
-        {
-          path: 'core/typography',
-          name: 'TypographyPage',
-          component: TypographyPage,
-        },
-        {
-          path: 'core/colors',
-          name: 'ColorsPage',
-          component: ColorsPage,
-        },
-        {
-          path: 'core/grid',
-          name: 'CoreGridPage',
-          component: CoreGridPage,
-        },
+        // {
+        //   path: 'chat',
+        //   name: 'ChatPage',
+        //   component: ChatPage,
+        // },
+        // // profile page
+        // {
+        //   path: 'profile',
+        //   name: 'ProfilePage',
+        //   component: ProfilePage,
+        // },
+        // // email page
+        // {
+        //   path: 'email',
+        //   name: 'EmailPage',
+        //   component: EmailPage,
+        // },
+        // // ecommerce pages
+        // {
+        //   path: 'ecommerce/management',
+        //   name: 'ProductsManagement',
+        //   component: ProductsManagement,
+        // },
+        // {
+        //   path: 'ecommerce/management/:id',
+        //   name: 'ProductEdit',
+        //   component: ProductEdit,
+        // },
+        // {
+        //   path: 'ecommerce/management/create',
+        //   name: 'ProductCreate',
+        //   component: ProductEdit,
+        // },
+        // {
+        //   path: 'ecommerce/products',
+        //   name: 'ProductsPage',
+        //   component: ProductsPage,
+        // },
+        // {
+        //   path: 'ecommerce/product',
+        //   name: 'ProductPage',
+        //   component: ProductPage,
+        // },
+        // {
+        //   path: 'ecommerce/product/:id',
+        //   name: 'DefiniteProductPage',
+        //   component: ProductPage,
+        // },
+        // // core pages
+        // {
+        //   path: 'core/typography',
+        //   name: 'TypographyPage',
+        //   component: TypographyPage,
+        // },
+        // {
+        //   path: 'core/colors',
+        //   name: 'ColorsPage',
+        //   component: ColorsPage,
+        // },
+        // {
+        //   path: 'core/grid',
+        //   name: 'CoreGridPage',
+        //   component: CoreGridPage,
+        // },
         // ui pages
-        {
-          path: 'ui/alerts',
-          name: 'AlertsPage',
-          component: AlertsPage,
-        },
-        {
-          path: 'ui/badge',
-          name: 'BadgePage',
-          component: BadgePage,
-        },
-        {
-          path: 'ui/buttons',
-          name: 'ButtonsPage',
-          component: ButtonsPage,
-        },
-        {
-          path: 'ui/card',
-          name: 'CardPage',
-          component: CardPage,
-        },
-        {
-          path: 'ui/carousel',
-          name: 'CarouselPage',
-          component: CarouselPage,
-        },
-        {
-          path: 'ui/jumbotron',
-          name: 'JumbotronPage',
-          component: JumbotronPage,
-        },
-        {
-          path: 'ui/icons',
-          name: 'IconsPage',
-          component: IconsPage,
-        },
-        {
-          path: 'ui/list-groups',
-          name: 'ListGroupsPage',
-          component: ListGroupsPage,
-        },
-        {
-          path: 'ui/modal',
-          name: 'ModalPage',
-          component: ModalPage,
-        },
-        {
-          path: 'ui/nav',
-          name: 'NavPage',
-          component: NavPage,
-        },
-        {
-          path: 'ui/navbar',
-          name: 'NavbarPage',
-          component: NavbarPage,
-        },
-        {
-          path: 'ui/notifications',
-          name: 'NotificationsPage',
-          component: NotificationsPage,
-        },
-        {
-          path: 'ui/popovers',
-          name: 'PopoversPage',
-          component: PopoversPage,
-        },
-        {
-          path: 'ui/progress',
-          name: 'ProgressPage',
-          component: ProgressPage,
-        },
-        {
-          path: 'ui/tabs',
-          name: 'TabsPage',
-          component: TabsPage,
-        },
+        // {
+        //   path: 'ui/alerts',
+        //   name: 'AlertsPage',
+        //   component: AlertsPage,
+        // },
+        // {
+        //   path: 'ui/badge',
+        //   name: 'BadgePage',
+        //   component: BadgePage,
+        // },
+        // {
+        //   path: 'ui/buttons',
+        //   name: 'ButtonsPage',
+        //   component: ButtonsPage,
+        // },
+        // {
+        //   path: 'ui/card',
+        //   name: 'CardPage',
+        //   component: CardPage,
+        // },
+        // {
+        //   path: 'ui/carousel',
+        //   name: 'CarouselPage',
+        //   component: CarouselPage,
+        // },
+        // {
+        //   path: 'ui/jumbotron',
+        //   name: 'JumbotronPage',
+        //   component: JumbotronPage,
+        // },
+        // {
+        //   path: 'ui/icons',
+        //   name: 'IconsPage',
+        //   component: IconsPage,
+        // },
+        // {
+        //   path: 'ui/list-groups',
+        //   name: 'ListGroupsPage',
+        //   component: ListGroupsPage,
+        // },
+        // {
+        //   path: 'ui/modal',
+        //   name: 'ModalPage',
+        //   component: ModalPage,
+        // },
+        // {
+        //   path: 'ui/nav',
+        //   name: 'NavPage',
+        //   component: NavPage,
+        // },
+        // {
+        //   path: 'ui/navbar',
+        //   name: 'NavbarPage',
+        //   component: NavbarPage,
+        // },
+        // {
+        //   path: 'ui/notifications',
+        //   name: 'NotificationsPage',
+        //   component: NotificationsPage,
+        // },
+        // {
+        //   path: 'ui/popovers',
+        //   name: 'PopoversPage',
+        //   component: PopoversPage,
+        // },
+        // {
+        //   path: 'ui/progress',
+        //   name: 'ProgressPage',
+        //   component: ProgressPage,
+        // },
+        // {
+        //   path: 'ui/tabs',
+        //   name: 'TabsPage',
+        //   component: TabsPage,
+        // },
         // forms
-        {
-          path: 'forms/elements',
-          name: 'FormElementsPage',
-          component: FormElementsPage,
-        },
-        {
-          path: 'forms/validation',
-          name: 'FormValidationPage',
-          component: FormValidationPage,
-        },
-        {
-          path: 'forms/wizard',
-          name: 'FormWizardPage',
-          component: FormWizardPage,
-        },
+        // {
+        //   path: 'forms/elements',
+        //   name: 'FormElementsPage',
+        //   component: FormElementsPage,
+        // },
+        // {
+        //   path: 'forms/validation',
+        //   name: 'FormValidationPage',
+        //   component: FormValidationPage,
+        // },
+        // {
+        //   path: 'forms/wizard',
+        //   name: 'FormWizardPage',
+        //   component: FormWizardPage,
+        // },
         // Charts
-        {
-          path: 'charts/overview',
-          name: 'ChartsPage',
-          component: ChartsPage,
-        },
-        {
-          path: 'charts/apex',
-          name: 'ApexPage',
-          component: ApexPage,
-        },
-        {
-          path: 'charts/echarts',
-          name: 'EchartsPage',
-          component: EchartsPage,
-        },
-        {
-          path: 'charts/highcharts',
-          name: 'HighchartsPage',
-          component: HighchartsPage,
-        },
+        // {
+        //   path: 'charts/overview',
+        //   name: 'ChartsPage',
+        //   component: ChartsPage,
+        // },
+        // {
+        //   path: 'charts/apex',
+        //   name: 'ApexPage',
+        //   component: ApexPage,
+        // },
+        // {
+        //   path: 'charts/echarts',
+        //   name: 'EchartsPage',
+        //   component: EchartsPage,
+        // },
+        // {
+        //   path: 'charts/highcharts',
+        //   name: 'HighchartsPage',
+        //   component: HighchartsPage,
+        // },
         // grid page
-        {
-          path: 'grid',
-          name: 'GridPage',
-          component: GridPagePage,
-        },
+        // {
+        //   path: 'grid',
+        //   name: 'GridPage',
+        //   component: GridPagePage,
+        // },
         // tables pages
-        {
-          path: 'tables/basic',
-          name: 'TablesBasicPage',
-          component: TablesBasicPage,
-        },
-        {
-          path: 'tables/dynamic',
-          name: 'TablesDynamicPage',
-          component: TablesDynamicPage,
-        },
+        // {
+        //   path: 'tables/basic',
+        //   name: 'TablesBasicPage',
+        //   component: TablesBasicPage,
+        // },
+        // {
+        //   path: 'tables/dynamic',
+        //   name: 'TablesDynamicPage',
+        //   component: TablesDynamicPage,
+        // },
         // maps pages
-        {
-          path: 'maps/google',
-          name: 'GoogleMapPage',
-          component: GoogleMapPage,
-        },
-        {
-          path: 'maps/amcharts',
-          name: 'AmchartsMapPage',
-          component: AmchartsMapPage,
-        },
+        // {
+        //   path: 'maps/google',
+        //   name: 'GoogleMapPage',
+        //   component: GoogleMapPage,
+        // },
+        // {
+        //   path: 'maps/amcharts',
+        //   name: 'AmchartsMapPage',
+        //   component: AmchartsMapPage,
+        // },
         // extra pages
-        {
-          path: 'extra/calendar',
-          name: 'CalendarPage',
-          component: CalendarPage,
-        },
-        {
-          path: 'extra/invoice',
-          name: 'InvoicePage',
-          component: InvoicePage,
-        },
-        {
-          path: 'extra/search',
-          name: 'SearchPage',
-          component: SearchPage,
-        },
-        {
-          path: 'extra/time-line',
-          name: 'TimelinePage',
-          component: TimelinePage,
-        },
-        {
-          path: 'extra/gallery',
-          name: 'GalleryPage',
-          component: GalleryPage,
-        },
+        // {
+        //   path: 'extra/calendar',
+        //   name: 'CalendarPage',
+        //   component: CalendarPage,
+        // },
+        // {
+        //   path: 'extra/invoice',
+        //   name: 'InvoicePage',
+        //   component: InvoicePage,
+        // },
+        // {
+        //   path: 'extra/search',
+        //   name: 'SearchPage',
+        //   component: SearchPage,
+        // },
+        // {
+        //   path: 'extra/time-line',
+        //   name: 'TimelinePage',
+        //   component: TimelinePage,
+        // },
+        // {
+        //   path: 'extra/gallery',
+        //   name: 'GalleryPage',
+        //   component: GalleryPage,
+        // },
       ],
     },
   ],
