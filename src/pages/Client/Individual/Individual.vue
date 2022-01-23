@@ -513,7 +513,14 @@ export default {
         });
     },
 
-
+ getCurrentUser(){
+      let authUser = localStorage.getItem('user');
+      var authUserObject = JSON.parse(authUser);
+      let name   = authUserObject.name;
+      let userId = authUserObject.id;
+      console.log("okokokko" + authUserObject.id)
+       this.name = name.slice(0,1).toUpperCase();
+    },
     async saveData() {
       this.process = true;
       let token = localStorage.getItem("token");
