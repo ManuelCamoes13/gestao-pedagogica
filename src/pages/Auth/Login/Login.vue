@@ -51,35 +51,23 @@ export default {
       err: false,
       process: false,
       type: 'password',
-       btnText: 'fa fa-eye'
     };
   },
   methods: {
-       showPassword() {
-      if(this.type === 'password') {
-        this.type = 'text'
-        this.btnText = 'fa fa-eye-slash'
-      } else {
-        this.type = 'password'
-        this.btnText = 'fa fa-eye'
-      }
-    },
+  
 
 
     login() {
-      this.process = true;
       let data = {
         email: this.email,
         senha: this.senha,
       };
-      this.$validator.validateAll();
       http
         .post('/login', data)
         .then((success) => {
           success;
           localStorage.setItem("user", JSON.stringify(success.data.novoObjecto));
           localStorage.setItem("token", success.data.token);
-          
           this.$router.push("/app/main/analytics");
         })
         .catch((error) => {
