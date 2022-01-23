@@ -36,7 +36,7 @@
       <i class="fa fa-circle text-primary mr-n-sm" />
       <i class="fa fa-circle text-danger" />
       &nbsp;
-      M-bills
+      Gestao Pedagogica
       &nbsp;
       <i class="fa fa-circle text-danger mr-n-sm" />
       <i class="fa fa-circle text-primary" />
