@@ -66,7 +66,8 @@ export default {
         .post('/login', data)
         .then((success) => {
           success;
-          localStorage.setItem("user", JSON.stringify(success.data.novoObjecto));
+            localStorage.setItem('user', JSON.stringify(success.data.existe));
+            console.log(this.novoObjecto)
           localStorage.setItem("token", success.data.token);
           this.$router.push("/app/main/analytics");
         })
