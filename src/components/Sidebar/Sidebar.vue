@@ -35,23 +35,23 @@
           { header: 'Instituicao', link: '/app/client/company' },
         ]"
         />
-        <NavLink
+        <!-- <NavLink
             :activeItem="activeItem"
             header="Atendimento"
             link="/app/chat"
             iconName="flaticon-message-circle"
             index="chat"
             isHeader
-        />
+        /> -->
 
-         <NavLink
+         <!-- <NavLink
             :activeItem="activeItem"
             header="Configuracoes"
             link="/app/configurations"
             iconName="fi flaticon-settings-10"
             index="configuration"
             isHeader
-        />
+        /> -->
         <!-- <NavLink
             :activeItem="activeItem"
             header="E-commerce"
