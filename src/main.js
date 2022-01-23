@@ -9,8 +9,8 @@ import { ClientTable } from 'vue-tables-2';
 import VueTextareaAutosize from 'vue-textarea-autosize';
 import mavonEditor from 'mavon-editor';
 import { VueMaskDirective } from 'v-mask';
-import VeeValidate from 'vee-validate';
-import VueFormWizard from 'vue-form-wizard';
+import VeeValidate,{ Validator } from 'vee-validate';
+import pt_PT from 'vee-validate/dist/locale/pt_PT';
 import axios from 'axios';
 import Toasted from 'vue-toasted';
 import VCalendar from 'v-calendar';
@@ -19,7 +19,8 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import bFormSlider from 'vue-bootstrap-slider';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 import VueTour from 'vue-tour';
-
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import store from './store';
 import router from './Routes';
 import App from './App';
@@ -28,6 +29,21 @@ import { AuthMixin } from './mixins/auth';
 import config from './config';
 import Widget from './components/Widget/Widget';
 import Scrollspy from './documentation/pages/ScrollSpyComponent';
+
+
+//COuntries
+import vueCountryRegionSelect from 'vue-country-region-select'
+Vue.use(vueCountryRegionSelect)
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+//Dynamic title
+import titleMixin from './mixins/titleMixin'
+
+// Language VeeValidate
+
+
 
 axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common['Content-Type'] = "application/json";
@@ -40,6 +56,7 @@ Vue.use(BootstrapVue);
 Vue.use(VCalendar, {
   firstDayOfWeek: 2
 });
+Vue.use(VueFormWizard)
 Vue.use(VueTouch);
 Vue.use(Trend);
 Vue.component('vue-code-highlight', VueCodeHighlight);
@@ -58,13 +75,16 @@ Vue.use(mavonEditor);
 Vue.component('apexchart', VueApexCharts);
 Vue.directive('mask', VueMaskDirective);
 Vue.use(VeeValidate, { fieldsBagName: 'fieldsbag' });
-Vue.use(VueFormWizard);
 Vue.mixin(layoutMixin);
 Vue.mixin(AuthMixin);
 Vue.use(Toasted, {duration: 10000});
 Vue.use(VueTour);
+Vue.use(VueSweetalert2);
+Vue.mixin(titleMixin);
 
 Vue.config.productionTip = false;
+
+Validator.localize('pt', pt_PT);
 
 /* eslint-disable no-new */
 new Vue({
