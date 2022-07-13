@@ -1,9 +1,6 @@
 {
   "name": "pavulla",
   "version": "5.4.7",
-  "engines": {
-    "node": "14.15.4"
-  },
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve --port 3000",
