@@ -26,7 +26,7 @@
 
         <NavLink
             :activeItem="activeItem"
-            header="Coordenadores"
+            header="Staff Pedagogico"
             link="/app/client"
             iconName="fi flaticon-grid"
             index="client"
@@ -35,15 +35,49 @@
           { header: 'Instituicao', link: '/app/client/company' },
         ]"
         />
-        <!-- <NavLink
+        <NavLink
+            :activeItem="activeItem"
+            header="Academia"
+            link="/app/client"
+            iconName="fi flaticon-grid"
+            index="client"
+                :childrenLinks="[
+          { header: 'Cursos', link: '/app/academia/curso' },
+          { header: 'Cadeiras', link: '/app/academia/cadeira' },
+          { header: 'Turmas', link: '/app/academia/turma' },
+
+        ]"
+        />
+
+  <!-- <NavLink
+            :activeItem="activeItem"
+            header="Plano Analitico"
+            link="/app/client"
+            iconName="fi flaticon-grid"
+            index="plano"
+                :childrenLinks="[
+          { header: 'Plano Analitico', link: '/app/academia/planoanalitico' },
+
+        ]"
+        /> -->
+
+         <NavLink
+            :activeItem="activeItem"
+            header="Plano Analitivo"
+            link="/app/academia/planoanalitico"
+            iconName="flaticon-grid"
+            index="grid"
+            isHeader
+        />
+        
+        <NavLink
             :activeItem="activeItem"
             header="Atendimento"
             link="/app/chat"
             iconName="flaticon-message-circle"
             index="chat"
             isHeader
-        /> -->
-
+        />
          <!-- <NavLink
             :activeItem="activeItem"
             header="Configuracoes"

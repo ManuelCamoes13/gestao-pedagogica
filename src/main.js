@@ -30,6 +30,8 @@ import config from './config';
 import Widget from './components/Widget/Widget';
 import Scrollspy from './documentation/pages/ScrollSpyComponent';
 
+import Multiselect from 'vue-multiselect';
+Vue.component('multiselect', Multiselect)
 
 //COuntries
 import vueCountryRegionSelect from 'vue-country-region-select'

@@ -94,6 +94,15 @@ import ErrorPage from '@/pages/Error/Error';
 import Login from '@/pages/Auth/Login/Login';
 import Register from '@/pages/Auth/Register/Register';
 
+
+import CadeiraPage from '@/pages/Academia/Cadeira/Cadeira';
+import CursoPage from '@/pages/Academia/Curso/Curso';
+import TurmaPage from '@/pages/Academia/Turma/Turma';
+import CursoCadeira from '@/pages/Academia/Curso/CursoCadeira/CursoCadeira';
+import PerfilProfessor from '@/pages/Client/Individual/PerfilProfessor';
+import PlanoAnalitico from '@/pages/Academia/PlanoAnalitico/PlanoAnalitico'
+import PlanoItems from '@/pages/Academia/PlanoAnalitico/Items/Items';
+
 import { isAuthenticated } from './mixins/auth';
 
 
@@ -249,12 +258,57 @@ export default new Router({
           component: ClientIndividualDetailPage,
         },
 
+        
+
+        
+
         {
           path: 'client/individual/detail/invoice',
           name: 'InvoicePage',
           component: ClientInvoicePage,
         },
 
+        {
+          path: 'academia/cadeira',
+          name: 'CadeiraPage',
+          component: CadeiraPage,
+        },
+        {
+          path: 'academia/curso',
+          name: 'CursoPage',
+          component: CursoPage,
+        },
+
+        {
+          path: 'academia/turma',
+          name: 'TurmaPage',
+          component: TurmaPage,
+        },
+        
+        {
+          path: 'academia/cursocadeira/:idCurso',
+          name: 'CursoCadeira',
+          component: CursoCadeira,
+        },
+
+        {
+          path: 'academia/professor/:idCoordenador',
+          name: 'ProfessorCadeira',
+          component: PerfilProfessor,
+        },
+
+        {
+          path: 'academia/planoanalitico',
+          name: 'PlanoAnalitico',
+          component: PlanoAnalitico,
+        },
+
+        {
+          path: 'academia/planoanalitico/:idPlano',
+          name: 'PlanoItems',
+          component: PlanoItems,
+        },
+        
         
         {
           path: 'main/widgets',
