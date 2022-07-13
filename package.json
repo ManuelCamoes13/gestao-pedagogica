@@ -2,7 +2,7 @@
   "name": "pavulla",
   "version": "5.4.7",
   "engines": {
-    "node": "14.15.4"
+    "node": "14.18.2"
   },
   "private": true,
   "scripts": {
