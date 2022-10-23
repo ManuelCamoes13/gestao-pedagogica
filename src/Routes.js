@@ -23,7 +23,9 @@ import WidgetsPage from '@/pages/Widgets/Widgets';
 // import HighchartsPage from '@/pages/Charts/Highcharts/Highcharts';
 
 //Clientes
-import ClientIndividualPage from '@/pages/Client/Individual/Individual';
+import ClientIndividualPage from '@/pages/StaffPedagogico/Coordenador/Coordenador';
+import Professor from '@/pages/StaffPedagogico/Professor/Professor';
+import PerfilProfessor from '@/pages/StaffPedagogico/Professor/PerfilProfessor';
 import ClientIndividualDetailPage from '@/pages/Client/Individual/Detail/Detail';
 import ClientCompanyPage from '@/pages/Client/Company/Company';
 import ClientInvoicePage from '@/pages/Client/Individual/Invoice/Invoice'
@@ -99,9 +101,11 @@ import CadeiraPage from '@/pages/Academia/Cadeira/Cadeira';
 import CursoPage from '@/pages/Academia/Curso/Curso';
 import TurmaPage from '@/pages/Academia/Turma/Turma';
 import CursoCadeira from '@/pages/Academia/Curso/CursoCadeira/CursoCadeira';
-import PerfilProfessor from '@/pages/Client/Individual/PerfilProfessor';
+// import PerfilProfessor from '@/pages/Client/Individual/PerfilProfessor';
 import PlanoAnalitico from '@/pages/Academia/PlanoAnalitico/PlanoAnalitico'
 import PlanoItems from '@/pages/Academia/PlanoAnalitico/Items/Items';
+
+import MinhasCadeirasPage from '@/pages/Academia/MinhasCadeiras/Cadeira';
 
 import { isAuthenticated } from './mixins/auth';
 
@@ -241,6 +245,17 @@ export default new Router({
           component: VisitsPage,
         },
 
+
+        {
+          path: 'professor',
+          name: 'Professor',
+          component: Professor,
+        },
+        {
+          path: 'professor/perfil',
+          name: 'PerfilProfessor',
+          component: PerfilProfessor,
+        },
         // Client pages
         {
           path: 'client/individual',
@@ -308,6 +323,12 @@ export default new Router({
           name: 'PlanoItems',
           component: PlanoItems,
         },
+
+        {
+          path: 'academia/minhascadeiras',
+          name: 'MinhasCadeirasPage',
+          component: MinhasCadeirasPage,
+        },
         
         
         {
@@ -321,6 +342,8 @@ export default new Router({
           name: 'PackagePage',
           component: PackagePage,
         },
+
+        
         // Chat page
         // {
         //   path: 'chat',

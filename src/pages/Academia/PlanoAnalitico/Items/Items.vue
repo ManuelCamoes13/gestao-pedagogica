@@ -2,7 +2,7 @@
   <div class="tables-basic">
     <b-row>
       <b-col>
-    <h2 class="page-title"><span class="fw-semi-bold">Plano Analitico</span></h2>
+    <h2 class="page-title"><span class="fw-semi-bold">Itens do Plano Analitico</span></h2>
     </b-col>
   <!-- {{items}} -->
     <b-col>
@@ -61,7 +61,7 @@
       
     </b-row>
    
-     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Novo Curso"  hide-footer>
+     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Novo Item"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
         <span>{{ msg }}</span>
       </b-alert>
@@ -93,35 +93,7 @@
             </b-form-group>
           </b-col>
 
-      <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Curso"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cursos" v-model="selectedCurso" label="descricao">
-
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
-   
-  <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Cadeira"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
-
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
+     
    
         </b-row>
         <div class="form-action bg-transparent px-0">
@@ -148,7 +120,7 @@
    </b-modal>
 
 
- <b-modal ref="edit" id="edit" size="md" body-class="bg-white"  title="Actualizar Curso"  hide-footer>
+ <b-modal ref="edit" id="edit" size="md" body-class="bg-white"  title="Actualizar"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
         <span>{{ msg }}</span>
       </b-alert>
@@ -178,20 +150,7 @@
             </b-form-group>
           </b-col>
 
-       <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Cadeira"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="name">
-
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
+       
    
 
         </b-row>

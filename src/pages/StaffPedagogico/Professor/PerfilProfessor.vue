@@ -1,13 +1,12 @@
 <template>
   <div class="tables-basic">
-    
-      <b-button @click="getProfCadeira">
-        ok
-      </b-button>
+   
             <b-row>
               <Widget>
                   {{professor}}
+                  
               </Widget>
+              <!-- {{cadeiras}} -->
             </b-row>
             <b-row>
       <b-col>
@@ -38,15 +37,18 @@
             <table class="table">
               <thead>
                 <tr>
-                  <!-- <th>Contador</th> -->
-                  <th class="hidden-sm-down">Cadeiras</th>
+                
+                  <th class="hidden-sm-down">Cadeira</th>
+                  <th class="hidden-sm-down">Curso</th>
 
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="cadeira in profcadeira"
                  :key="cadeira.id">
-                  <td> {{cadeira.descricao}}</td>
+                  <td> {{cadeira.cadeira_descricao}}</td>
+                  <td> {{cadeira.curso_descricao}}</td>
+                  
                   <td class="width-200">
                     <b-button  variant="info" size="sm" @click="openUpdate(curso)">
                       <i class="fa fa-edit"></i>
@@ -74,45 +76,7 @@
       </b-alert>
       <b-form @submit.prevent="">
         <b-row>
-         
-          <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Descricao"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Descricao"
-            >
-              <input
-                v-validate="'required|min:2|alpha_spaces'"
-                name="Nome"
-                :class="{
-                  'form-control': true,
-                  'is-invalid': errors.has('Nome'),
-                }"
-                type="text"
-                id="name_company"
-                v-model="descricao"
-              />
-              <span class="text-danger" v-if="errors.has('Nome')">
-                {{ errors.first("Nome") }}
-              </span>
-            </b-form-group>
-          </b-col>
-            <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Curso"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cursos" v-model="selectedCurso" label="descricao">
-
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
+           
    
 
       <b-col md="12" cols="12" xs="12">
@@ -126,7 +90,7 @@
               <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
 
               </v-select>
-
+{{selectedCadeira}}
              
             </b-form-group>
           </b-col>
@@ -355,8 +319,8 @@ export default {
       };
       const data = {
          usuario_id:this.professor.id,
-         cadeiras:this.result,
-         curso: this.selectedCurso.id
+         cadeiras:this.selectedCadeira.cadeira_id,
+         curso: this.selectedCadeira.curso_id
       }
       setTimeout(function () {
       }, 1000);
@@ -366,7 +330,8 @@ export default {
           success;
           //  this.getCursoCadeira()
           this.$refs["novo"].hide();
-          // this.getCursoCadeira()
+          this.getCursoCadeira()
+         
           this.$swal({
             toast: true,
             position: "top-end",
@@ -422,7 +387,7 @@ export default {
       setTimeout(function () {
       }, 1000);
       http
-        .get(`/cursocadeira/${this.$route.params.idCurso}`, config)
+        .get(`/profcadeira/${this.$route.params.idCoordenador}`, config)
         .then((result) => {
           this.CursoCadeira = result.data.data;
         })
@@ -466,7 +431,7 @@ openUpdate(curso){
       setTimeout(function () {
       }, 1000);
       http
-        .get("/cadeira", config)
+        .get("/lerCadeiras", config)
         .then((result) => {
           this.cadeiras = result.data.data;
         })
@@ -477,7 +442,6 @@ openUpdate(curso){
     },
 
   getProfCadeira() {
-    alert("ok")
       let token = localStorage.getItem("token");
       let config = {
         headers: {

@@ -31,8 +31,8 @@
             iconName="fi flaticon-grid"
             index="client"
                 :childrenLinks="[
-          { header: 'Lista', link: '/app/client/individual' },
-          { header: 'Instituicao', link: '/app/client/company' },
+          { header: 'Coordenador', link: '/app/client/individual' },
+          { header: 'Professor', link: '/app/professor' },
         ]"
         />
         <NavLink
@@ -49,6 +49,14 @@
         ]"
         />
 
+        <NavLink
+            :activeItem="activeItem"
+            header="Minhas cadeiras"
+            link="/app/academia/minhascadeiras"
+            iconName="flaticon-message-circle"
+            index="chat"
+            isHeader
+        />
   <!-- <NavLink
             :activeItem="activeItem"
             header="Plano Analitico"

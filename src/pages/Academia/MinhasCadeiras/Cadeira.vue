@@ -1,21 +1,14 @@
 <template>
   <div class="tables-basic">
-    
-      <b-button @click="getProfCadeira">
-        ok
-      </b-button>
-            <b-row>
-              <Widget>
-                  {{professor}}
-              </Widget>
-            </b-row>
-            <b-row>
+    <b-row>
       <b-col>
-    <h2 class="page-title"><span class="fw-semi-bold"></span></h2>
+    <h2 class="page-title"><span class="fw-semi-bold">Cadeira</span></h2>
+
+     {{user}}
     </b-col>
     <b-col>
       <div class="d-flex">
-              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i> Alocar Cadeiras</b-button>
+              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Nova</b-button>
               
             </div>
             </b-col>
@@ -27,6 +20,7 @@
         >
 
         <div class="clearfix">
+            
              <div class="messageTableHeader">
     <div>
 
@@ -39,23 +33,20 @@
               <thead>
                 <tr>
                   <!-- <th>Contador</th> -->
-                  <th class="hidden-sm-down">Cadeiras</th>
-
+                  <th class="hidden-sm-down">Descricao</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="cadeira in profcadeira"
+                <tr v-for="cadeira in cadeiras"
                  :key="cadeira.id">
                   <td> {{cadeira.descricao}}</td>
-                  <td class="width-200">
-                    <b-button  variant="info" size="sm" @click="openUpdate(curso)">
+                  
+                  <td class="width-150">
+                    <b-button  variant="info" size="sm" @click="openUpdate(cadeira)">
                       <i class="fa fa-edit"></i>
                     </b-button>
                     <b-button @click="deleteData(cadeira)" class="ml-3" variant="danger">
                       <i class="fa fa-trash" ></i>
-                    </b-button>
-                     <b-button :to="{ name: 'CursoCadeira', params: { idCurso: curso.id } }" class="ml-3" variant="success">
-                      <i class="fa fa-eye" ></i>
                     </b-button>
                   </td>
                 </tr>
@@ -68,7 +59,7 @@
       
     </b-row>
    
-     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Adicionar Cadeira ao curso"  hide-footer>
+     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Nova Cadiera"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
         <span>{{ msg }}</span>
       </b-alert>
@@ -99,43 +90,8 @@
               </span>
             </b-form-group>
           </b-col>
-            <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Curso"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cursos" v-model="selectedCurso" label="descricao">
 
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
-   
-
-      <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Cadeira"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
-
-              </v-select>
-
-             
-            </b-form-group>
-          </b-col>
-
-          <b-col>
-            <div>
-    <multiselect v-model="value" ></multiselect>
-  </div>
-          </b-col>
+      
    
 
         </b-row>
@@ -156,14 +112,14 @@
             @click.prevent="saveData"
           >
             Registrar
-            <b-spinner v-show="process" small></b-spinner>
+            <!-- <b-spinner v-show="process" small></b-spinner> -->
           </b-button>
         </div>
       </b-form>
    </b-modal>
 
 
- <b-modal ref="edit" id="edit" size="md" body-class="bg-white"  title="Actualizar Curso"  hide-footer>
+ <b-modal ref="edit" id="edit" size="md" body-class="bg-white"  title="Actualizar Cadeira"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
         <span>{{ msg }}</span>
       </b-alert>
@@ -187,41 +143,13 @@
                 }"
                 type="text"
                 id="name_company"
-                v-model="curso.descricao"
+                v-model="cadeira.descricao"
               />
              
             </b-form-group>
           </b-col>
-          <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Curos"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
 
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
-   
-
-       <b-col md="12" cols="12" xs="12">
-            <b-form-group
-              horizontal
-              label="Coordenador"
-              :label-cols="3"
-              label-breakpoint="md"
-              label-for="Coordenador"
-            >
-              <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
-
-              </v-select>
-             
-            </b-form-group>
-          </b-col>
+      
    
 
         </b-row>
@@ -254,17 +182,16 @@
 <script>
 
 import vSelect from 'vue-select';
- import Multiselect from 'vue-multiselect'
 
 import http from "../../../../http-common";
 export default {
   name: 'Coordenadores',
   components: {
   vSelect,
-  Multiselect
   },
   data() {
     return {
+         user: localStorage.getItem('user') || {},
       error:"",
       err:false,
       msg:'',
@@ -272,48 +199,23 @@ export default {
       apelido: '',
       email: "",
       telefone: "",
-      curso:[],
-      coordenadores:[],
-      selectedCadeira:"",
       cadeiras:[],
-      CursoCadeira:[],
-      result:[],
-      professor:[],
-      selectedCurso:"",
-      profcadeira:[],
+      cadeira:[{
+        descricao:"",
+        id:""
+      }
+        
+
+      ],
     };
   },
 
    created() {
     this.getData();
-    this.getProfCadeira();
-    this.getCoordenadores();
-    this.getCadeira();
-    this.getCursoCadeira();
-    this.getCursos()
-    
+    this.getUser();
+    this.getCurrentUser();
   },
   methods: {
-
-        getCursos() {
-      let token = localStorage.getItem("token");
-      let config = {
-        headers: {
-          "authorization": token,
-        },
-      };
-      setTimeout(function () {
-      }, 1000);
-      http
-        .get("/curso", config)
-        .then((result) => {
-          this.cursos = result.data.data;
-        })
-        .catch((error) => {
-          error;
-          this.loading = false;
-        });
-    },
 
      deleteData(cadeira) {
        this.cadeira = cadeira;
@@ -324,17 +226,15 @@ export default {
           "authorization": token,
         },
       };
-      const data = {
-         curso_id:this.curso.id,
-         cadeiras:this.cadeira.id,
-         
-      }
+     
       setTimeout(function () {
       }, 1000);
       http
-        .delete("/cursocadeira",data, config)
+        .delete(`/cadeira/${cadeira.id}`, config)
         .then((success) => {
           success;
+          this.getData();
+         
         
         })
         .catch((error) => {
@@ -342,11 +242,7 @@ export default {
         });
     },
 
-    
-
  saveData() {
-   this.result.push(this.selectedCadeira.id);
-
       let token = localStorage.getItem("token");
       let config = {
         headers: {
@@ -354,19 +250,17 @@ export default {
         },
       };
       const data = {
-         usuario_id:this.professor.id,
-         cadeiras:this.result,
-         curso: this.selectedCurso.id
+         descricao:this.descricao,
+         
       }
       setTimeout(function () {
       }, 1000);
       http
-        .post("/profcadeira",data, config)
+        .post("/cadeira",data, config)
         .then((success) => {
           success;
-          //  this.getCursoCadeira()
           this.$refs["novo"].hide();
-          // this.getCursoCadeira()
+          this.getData();
           this.$swal({
             toast: true,
             position: "top-end",
@@ -374,7 +268,7 @@ export default {
             timer: 3000,
             icon: "success",
             title: "Sucesso",
-            text: "curso criado!",
+            text: "Utilizador criado!",
           });
         
         })
@@ -393,6 +287,7 @@ export default {
         });
     },
      getData() {
+      
       let token = localStorage.getItem("token");
       let config = {
         headers: {
@@ -402,72 +297,9 @@ export default {
       setTimeout(function () {
       }, 1000);
       http
-        .get(`/professor/${this.$route.params.idCoordenador}`, config)
+        .get("/profcadeira/10", config)
         .then((result) => {
-          this.professor = result.data.data;
-        })
-        .catch((error) => {
-          error;
-          this.loading = false;
-        });
-    },
-
-      getCursoCadeira() {
-      let token = localStorage.getItem("token");
-      let config = {
-        headers: {
-          "authorization": token,
-        },
-      };
-      setTimeout(function () {
-      }, 1000);
-      http
-        .get(`/cursocadeira/${this.$route.params.idCurso}`, config)
-        .then((result) => {
-          this.CursoCadeira = result.data.data;
-        })
-        .catch((error) => {
-          error;
-          this.loading = false;
-        });
-    },
-
-openUpdate(curso){
-  this.curso= curso
-  this.$refs["edit"].show();
-},
-
-     getCoordenadores() {
-      let token = localStorage.getItem("token");
-      let config = {
-        headers: {
-          "authorization": token,
-        },
-      };
-      setTimeout(function () {
-      }, 1000);
-      http
-        .get("/cord", config)
-        .then((result) => {
-          this.coordenadores = result.data.data;
-        })
-        .catch((error) => {
-          error;
-          this.loading = false;
-        });
-    },
-   getCadeira() {
-      let token = localStorage.getItem("token");
-      let config = {
-        headers: {
-          "authorization": token,
-        },
-      };
-      setTimeout(function () {
-      }, 1000);
-      http
-        .get("/cadeira", config)
-        .then((result) => {
+          
           this.cadeiras = result.data.data;
         })
         .catch((error) => {
@@ -476,26 +308,14 @@ openUpdate(curso){
         });
     },
 
-  getProfCadeira() {
-    alert("ok")
-      let token = localStorage.getItem("token");
-      let config = {
-        headers: {
-          "authorization": token,
-        },
-      };
-      setTimeout(function () {
-      }, 1000);
-      http
-        .get(`/profcadeira/${this.$route.params.idCoordenador}`, config)
-        .then((result) => {
-          this.profcadeira = result.data.data;
-        })
-        .catch((error) => {
-          error;
-          this.loading = false;
-        });
+
+  getUser(){
+        this.user = JSON.parse(localStorage.getItem('user'));
     },
+openUpdate(cadeira){
+  this.cadeira= cadeira
+  this.$refs["edit"].show();
+},
 
 
  updateData() {
@@ -506,14 +326,14 @@ openUpdate(curso){
         },
       };
       const data = {
-         descricao:this.curso.descricao,
-         id:this.curso.id
+         descricao:this.cadeira.descricao,
+         id:this.cadeira.id
          
       }
       setTimeout(function () {
       }, 1000);
       http
-        .put("/curso",data, config)
+        .put("/cadeira",data, config)
         .then((success) => {
           success;
           this.$refs["edit"].hide();
@@ -543,17 +363,16 @@ openUpdate(curso){
           });
         });
     },
-//  getCurrentUser(){
-//       let authUser = localStorage.getItem('user');
-//       var authUserObject = JSON.parse(authUser);
-//       let name   = authUserObject.name;
-//       let userId = authUserObject.id;
-//        this.name = name.slice(0,1).toUpperCase();
-//     },
+ getCurrentUser(){
+      let authUser = localStorage.getItem('user');
+      var authUserObject = JSON.parse(authUser);
+      let name   = authUserObject.name;
+      let userId = authUserObject.id;
+       this.name = name.slice(0,1).toUpperCase();
+    },
  
   },
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style src="./Basic.scss" lang="scss" scoped />

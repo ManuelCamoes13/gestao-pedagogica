@@ -345,6 +345,7 @@ export default {
     
 
  saveData() {
+   alert("ok")
    this.result.push(this.selectedCadeira.id);
 
       let token = localStorage.getItem("token");

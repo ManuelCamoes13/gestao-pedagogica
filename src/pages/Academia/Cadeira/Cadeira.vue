@@ -31,7 +31,7 @@
               <thead>
                 <tr>
                   <!-- <th>Contador</th> -->
-                  <th class="hidden-sm-down">Descricao</th>
+                  <th class="hidden-sm-down">Nome da cadeira</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,12 +39,15 @@
                  :key="cadeira.id">
                   <td> {{cadeira.descricao}}</td>
                   
-                  <td class="width-150">
+                  <td class="width-200">
                     <b-button  variant="info" size="sm" @click="openUpdate(cadeira)">
                       <i class="fa fa-edit"></i>
                     </b-button>
-                    <b-button @click="deleteData(cadeira)" class="ml-3" variant="danger">
+                    <b-button @click="deleteData(cadeira)" size="sm" class="ml-3" variant="danger">
                       <i class="fa fa-trash" ></i>
+                    </b-button>
+                    <b-button :to="{ name: 'items', params: { idCadeira: cadeira.id } }" size="sm" class="ml-3" variant="success">
+                      <i class="fa fa-eye" ></i>
                     </b-button>
                   </td>
                 </tr>

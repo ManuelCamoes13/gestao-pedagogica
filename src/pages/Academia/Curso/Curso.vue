@@ -32,14 +32,12 @@
                 <tr>
                   <!-- <th>Contador</th> -->
                   <th class="hidden-sm-down">Descricao</th>
-                  <th>Coordenador</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="curso in cursos"
                  :key="curso.id">
                   <td> {{curso.descricao}}</td>
-                  <td>{{curso.coordenador_nome}}</td>
                   <td class="width-200">
                     <b-button  variant="info" size="sm" @click="openUpdate(curso)">
                       <i class="fa fa-edit"></i>

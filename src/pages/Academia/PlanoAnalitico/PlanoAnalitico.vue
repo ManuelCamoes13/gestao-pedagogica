@@ -4,7 +4,6 @@
       <b-col>
     <h2 class="page-title"><span class="fw-semi-bold">Plano Analitico</span></h2>
     </b-col>
-    {{planos}}
     <b-col>
       <div class="d-flex">
               <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Nova</b-button>
@@ -104,7 +103,7 @@
               <v-select name="curso" :options="cursos" v-model="selectedCurso" label="descricao">
 
               </v-select>
-             
+             {{selectedCurso}}
             </b-form-group>
           </b-col>
    
@@ -119,6 +118,7 @@
               <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
 
               </v-select>
+             {{selectedCadeira}}
              
             </b-form-group>
           </b-col>
@@ -251,8 +251,8 @@ export default {
 
       ],
       coordenadores:[],
-      selectedCadeira:"",
-      selectedCurso:"",
+      selectedCadeira:[],
+      selectedCurso:[],
     };
   },
 
@@ -289,17 +289,22 @@ export default {
     },
 
  saveData() {
+  alert('ok')
       let token = localStorage.getItem("token");
       let config = {
         headers: {
           "authorization": token,
         },
       };
+      alert('ok')
       const data = {
          descricao:this.descricao,
-         planoanalitico_id:this.this.$router.params
+         cadeira_id:this.selectedCadeira.id,
+          curso_id:this.selectedCurso.id,
+        //  planoanalitico_id:this.this.$router.params
          
       }
+      alert('ok')
       setTimeout(function () {
       }, 1000);
       http
