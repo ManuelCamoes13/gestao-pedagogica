@@ -31,7 +31,7 @@
             iconName="fi flaticon-grid"
             index="client"
                 :childrenLinks="[
-          { header: 'Coordenador', link: '/app/client/individual' },
+          { header: 'Coordenador', link: '/app/coordenador' },
           { header: 'Professor', link: '/app/professor' },
         ]"
         />

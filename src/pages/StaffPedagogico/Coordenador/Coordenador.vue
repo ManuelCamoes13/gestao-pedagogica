@@ -1,16 +1,14 @@
 <template>
   <div class="tables-basic">
-    <b-row>
-      <b-col>
-    <h2 class="page-title"><span class="fw-semi-bold">Coordenadores</span></h2>
-    </b-col>
-    <b-col>
-      <div class="d-flex">
-              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Novo</b-button>
-              
-            </div>
-            </b-col>
-            </b-row>
+    
+            <h1 class="page-title">
+              Coordenadores
+              <div class="float-right">
+                <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"
+                  ><i class="fa fa-plus"></i> ADICIONAR NOVO</b-button
+                >
+              </div>
+            </h1>
     <b-row>
       <b-col>
         <Widget
@@ -23,7 +21,7 @@
     <div>
 
     </div>
-    <b-form-input placeholder="Procurar" size="sm" @input="search" />
+    <!-- <b-form-input placeholder="Procurar" size="sm" @input="search" /> -->
   </div>
           </div>
           <div class="table-resposive">
@@ -745,7 +743,14 @@ export default {
       http
         .get("/cord", config)
         .then((result) => {
-          this.coordenadores = result.data.data;
+          this.newArray = result.data.data;
+
+          this.coordenadores = this.newArray.filter(function (el)
+{
+  return el.role==2
+         
+}
+);
         })
         .catch((error) => {
           error;

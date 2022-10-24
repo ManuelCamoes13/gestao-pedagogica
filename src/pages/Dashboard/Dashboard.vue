@@ -1,346 +1,505 @@
 <template>
-  <div class="dashboard-page">
-    <h1 class="page-title">Dados analiticos</h1>
-    <div class="sidesWrapper">
-      <div class="analyticsSide">
-        <b-row>
-          <b-col lg="3" sm="6" xs="12">
-            <div class="pb-xlg h-100">
-              <Widget class="h-100 mb-0" title="Contratos Activos" close :fetchingData="isReceiving">
-                <div class="d-flex justify-content-between align-items-center mb-lg">
-                  <h2>{{visits.count}}</h2>
-                  <i class="la la-arrow-right text-primary la-lg rotate-315" />
-                </div>
-                <div class="d-flex flex-wrap justify-content-between">
-                  <div class="mt">
-                    <h6>+{{visits.logins}}</h6><p class="text-muted mb-0 mr"><small>Adesoes</small></p>
-                  </div>
-                  <div class="mt">
-                    <h6>80%</h6><p class="text-muted mb-0"><small>Ind.</small></p>
-                  </div>
-                  <div class="mt">
-                    <h6>20%</h6><p class="text-muted mb-0 mr"><small>Empresa</small></p>
-                  </div>
-                </div>
-              </Widget>
-            </div>
-          </b-col>
-          <b-col lg="3" sm="6" xs="12">
-            <div class="pb-xlg h-100">
-              <Widget class="h-100 mb-0" title="Receitas" close :fetchingData="isReceiving">
-                <highcharts :options="donut"></highcharts>
-              </Widget>
-            </div>
-          </b-col>
-          <b-col lg="3" sm="6" xs="12">
-            <div class="pb-xlg h-100">
-              <Widget class="h-100 mb-0" title="Faturacao" close :fetchingData="isReceiving">
-                <p class="text-muted d-flex flex-wrap">
-                  <small class="mr-lg d-flex align-items-center">
-                    <span class="circle bg-danger text-danger mr-xs" style="font-size: 4px;">
-                      .
-                    </span>
-                    Colectado
-                  </small>
-                  <small class="mr-lg d-flex align-items-center">
-                    <span class="circle bg-primary text-primary mr-xs" style="font-size: 4px;">
-                      .
-                    </span>
-                    Por colectar
-                  </small>
-                </p>
-                <h6>Empreas</h6>
-                <b-progress class="mb-xs" style="height: 5px"
-                  variant="danger" :value="performance.sdk.this_period_pct" :max="100" />
-                <b-progress class="mb" style="height: 5px"
-                  variant="primary" :value="performance.sdk.last_period_pct" :max="100" />
-                <h6>Individual</h6>
-                <b-progress class="mb-xs" style="height: 5px"
-                  variant="danger" :value="performance.integration.this_period_pct" :max="100" />
-                <b-progress style="height: 5px"
-                  variant="primary" :value="performance.integration.last_period_pct" :max="100" />
-              </Widget>
-            </div>
-          </b-col>
-          <b-col lg="3" sm="6" xs="12">
-            <div class="pb-xlg h-100">
-              <Widget class="h-100 mb-0" title="Atendimentos" close :fetchingData="isReceiving">
-                <div class="d-flex justify-content-between align-items-center mb-lg">
-                  <h2>300</h2>
-                  <i class="la la-arrow-right text-primary la-lg rotate-315" />
-                </div>
-                <div class="d-flex flex-wrap justify-content-between">
-                  <div class="mt">
-                    <h6>150</h6><p class="text-muted mb-0 mr"><small>Novos</small></p>
-                  </div>
-                  <div class="mt">
-                    <h6>100</h6><p class="text-muted mb-0"><small>Pedidos</small></p>
-                  </div>
-                  <div class="mt">
-                    <h6>50</h6><p class="text-muted mb-0 mr"><small>Recl.</small></p>
-                  </div>
-                </div>
-              </Widget>
-            </div>
-          </b-col>
-          <b-col xs="12">
-            <MainChart :data="mainChart" :isReceiving="isReceiving" />
-          </b-col>
-        </b-row>
-        <!-- <b-row>
-          <b-col xs="12" lg="6" xl="4" v-for="stat in mock.bigStat" :key="stat.id">
-            <BigStat
-              :product="stat.product"
-              :color="stat.color"
-              :total="stat.total"
-              :registrations="stat.registrations"
-              :bounce="stat.bounce"
-            />
-          </b-col>
-        </b-row> -->
-        <!-- <b-row>
-          <b-col xs="12">
-            <Widget
-              title="<h5>Support <span class='fw-semi-bold'>Requests</span></h5>"
-              bodyClass="widget-table-overflow"
-              customHeader
-            >
-              <div class="table-responsive">
-                <table class="table table-striped table-lg mb-0 requests-table">
-                  <thead>
-                    <tr class="text-muted">
-                      <th>NAME</th>
-                      <th>EMAIL</th>
-                      <th>PRODUCT</th>
-                      <th>PRICE</th>
-                      <th>DATE</th>
-                      <th>CITY</th>
-                      <th>STATUS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      v-for="row in table"
-                      :key="row.id"
-                    >
-                      <td>{{row.name}}</td>
-                      <td>{{row.email}}</td>
-                      <td>{{row.product}}</td>
-                      <td>{{row.price}}</td>
-                      <td>{{row.date}}</td>
-                      <td>{{row.city}}</td>
-                      <td>
-                        <b-badge
-                          :variant="row.status === 'Pending'
-                            ? 'success'
-                            : row.status === 'Declined' ? 'danger' : 'info'"
-                          class="m-1 mx-3">
-                          {{row.status}}
-                        </b-badge>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </Widget>
-          </b-col>
-        </b-row> -->
+  <div class="widgets-page">
+    <h1 class="page-title">
+      Cliente
+      <small>Muarucha Assane</small>
+      <div class="float-right">
+        <b-button v-b-modal.imprimir variant="success" class="mr-3" size="sm"
+          ><i class="fa fa-print"></i> Imprimir</b-button
+        >
       </div>
-      <!-- <div class="analyticsSide">
-        <b-row>
-          <b-col xs="12" md="6" xl="12" class="lastSideElement">
-            <Widget bodyClass="p-0 mt-0" class="mb-xlg pt-0">
-              <Calendar white />
-            </Widget>
-          </b-col>
-          <b-col xs="12" md="6" xl="12" class="lastSideElement">
-            <TaskContainer :data="mock.tasks"/>
-          </b-col>
-          <b-col xs="12" md="6" xl="12" class="lastSideElement">
-            <Widget
-              className="widget"
-              bodyClass="notifications w-100 mt-lg"
-              :title="`
-                <h4>Notifications
-                  <span class='badge badge-pill badge-primary fw-normal pull-right mt-xs'>
-                    ${mock.notifications.length}
-                  </span>
-                </h4>
-              `"
-              customHeader
-            >
-              <div v-for="notification in mock.notifications"
-                class="d-flex align-items-start" :key="notification.id">
-                <i :class="`la la-${notification.icon} mr text-primary`" />
-                <p
-                  :class="{ 'mb-0': notification.id === mock.notifications.length - 1 }"
-                  v-html="notification.content"
-                />
+    </h1>
+
+    <b-row>
+      <b-col lg="3" md="6" xs="12">
+        <Widget>
+          <div class="clearfix">
+            <b-row class="flex-nowrap">
+              <b-col xs="3">
+                <span class="widget-icon">
+                  <!-- <i class="fi flaticon-warning text-danger" /> -->
+                  <i class="fa fa-exclamation-triangle text-danger" />
+                </span>
+              </b-col>
+              <b-col xs="9">
+                <h6 class="m-0">TOTAL DE DIVIDA</h6>
+                <p class="h2 m-0 fw-normal">350</p>
+              </b-col>
+            </b-row>
+            <b-row class="flex-nowrap">
+              <b-col xs="6">
+                <h6 class="m-0">Meses em Atraso</h6>
+                <!-- <p class="value5">3</p> -->
+              </b-col>
+              <b-col xs="6">
+                <h6 class="m-0"></h6>
+                <p class="value5">4</p>
+              </b-col>
+            </b-row>
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="3" md="6" xs="12">
+        <Widget>
+          <div class="clearfix">
+            <b-row class="flex-nowrap">
+              <b-col xs="3">
+                <span class="widget-icon">
+                  <!-- <i class="fi flaticon-warning text-danger" /> -->
+                  <i class="fa fa-calendar text-gray" />
+                </span>
+              </b-col>
+              <b-col xs="9">
+                <h6 class="m-0">Leitura anterior</h6>
+                <p class="h4 m-0 fw-normal">25/02/2021</p>
+              </b-col>
+            </b-row>
+            <b-row class="flex-nowrap">
+              <b-col xs="6">
+                <h6 class="m-0">Volume</h6>
+                <p class="value5">1432 m3</p>
+              </b-col>
+              <b-col xs="6">
+                <h6 class="m-0">M/dia</h6>
+                <p class="value5">1.5m3</p>
+              </b-col>
+            </b-row>
+          </div>
+        </Widget>
+        <!-- <Widget>
+          <div class="clearfix">
+            <b-row class="flex-nowrap">
+              <b-col xs="3">
+                <span class="widget-icon">
+                  <i class="fi flaticon-magic-wand text-danger" />
+                </span>
+              </b-col>
+              <b-col xs="9">
+                <div class="overflow-hidden">
+                  <transition name="carousel" mode="out-in">
+                    <div v-if="carouselFirstGroup" key="first">
+                      <h6 class="m-0">VISITS TODAY</h6>
+                      <p class="h2 m-0 fw-normal">12,324</p>
+                    </div>
+                    <div v-else key="second">
+                      <h6 class="m-0">VISITS YESTERDAY</h6>
+                      <p class="h2 m-0 fw-normal">11,885</p>
+                    </div>
+                  </transition>
+                </div>
+              </b-col>
+            </b-row>
+            <b-row class="flex-nowrap">
+              <b-col xs="6">
+                <h6 class="m-0">New Visitors</h6>
+                <div class="overflow-hidden">
+                  <transition name="carousel" mode="out-in">
+                      <p v-bind:key="carouselFirstGroup" class="value5">
+                        {{carouselFirstGroup ? '1,332' : '20.1%'}}
+                      </p>
+                  </transition>
+                </div>
+              </b-col>
+              <b-col xs="6">
+                <h6 class="m-0">Bounce Rate</h6>
+                <div class="overflow-hidden">
+                  <transition name="carousel" mode="out-in">
+                    <p v-bind:key="carouselFirstGroup" class="value5">
+                      {{carouselFirstGroup ? '217' : '2.3%'}}
+                    </p>
+                  </transition>
+                </div>
+              </b-col>
+            </b-row>
+          </div>
+        </Widget> -->
+      </b-col>
+      <b-col lg="3" md="6" xs="12">
+        <!-- <Widget>
+          <div class="overflow-hidden">
+            <transition name="carousel" mode="out-in">
+              <div v-if="carouselFirstGroup" key="first">
+                <b-row class="flex-nowrap">
+                  <b-col xs="3">
+                    <span class="widget-icon">
+                      <i class="fi flaticon-notebook-4 text-info" />
+                    </span>
+                  </b-col>
+                  <b-col xs="9">
+                    <h6 class="m-0">ORDERS</h6>
+                    <p class="h2 m-0 fw-normal">82,765</p>
+                  </b-col>
+                </b-row>
+                <b-row class="flex-nowrap">
+                  <b-col xs="6">
+                    <h6 class="m-0">Avg. Time</h6>
+                    <p class="value5">2:56</p>
+                  </b-col>
+                  <b-col xs="6">
+                    <h6 class="m-0">Last Week</h6>
+                    <p class="value5">374</p>
+                  </b-col>
+                </b-row>
               </div>
-            </Widget>
+              <div v-else key="second">
+                <b-row class="flex-nowrap">
+                  <b-col xs="3">
+                    <span class="widget-icon">
+                      <i class="fi flaticon-shuffle text-info" />
+                    </span>
+                  </b-col>
+                  <b-col xs="9">
+                    <h6 class="m-0">PICKED ORDERS</h6>
+                    <p class="h2 m-0 fw-normal">13.8%</p>
+                  </b-col>
+                </b-row>
+                <b-row class="flex-nowrap">
+                  <b-col xs="6">
+                    <h6 class="m-0">Basic</h6>
+                    <p class="value5">3,692</p>
+                  </b-col>
+                  <b-col xs="6">
+                    <h6 class="m-0">Advanced</h6>
+                    <p class="value5">1,441</p>
+                  </b-col>
+                </b-row>
+              </div>
+            </transition>
+          </div>
+        </Widget> -->
+        <Widget>
+          <div class="clearfix">
+            <b-row class="flex-nowrap">
+              <b-col xs="3">
+                <span class="widget-icon">
+                  <!-- <i class="fi flaticon-warning text-danger" /> -->
+                  <i class="fa fa-calendar text-info" />
+                </span>
+              </b-col>
+              <b-col xs="9">
+                <h6 class="m-0">Leitura actual</h6>
+                <p class="h4 m-0 fw-normal">25/03/2021</p>
+              </b-col>
+            </b-row>
+            <b-row class="flex-nowrap">
+              <b-col xs="6">
+                <h6 class="m-0">Volume</h6>
+                <p class="value5">1435 m3</p>
+              </b-col>
+              <b-col xs="6">
+                <h6 class="m-0">M/dia</h6>
+                <p class="value5">1.3m3</p>
+              </b-col>
+            </b-row>
+          </div>
+        </Widget>
+      </b-col>
+      <b-col lg="3" md="6" xs="12">
+        <Widget>
+          <div class="clearfix">
+            <b-row class="flex-nowrap">
+              <b-col xs="3">
+                <span class="widget-icon">
+                  <!-- <i class="fi flaticon-diamond text-success" /> -->
+                  <i class="fa fa-money text-success"></i>
+                </span>
+              </b-col>
+              <b-col xs="9">
+                <h6 class="m-0">TOTAL</h6>
+                <p class="h2 m-0 fw-normal">1,448</p>
+              </b-col>
+            </b-row>
+            <b-row class="flex-nowrap">
+              <b-col xs="6">
+                <!-- <h6 class="m-0">Consumo</h6>
+                <p class="value5">6</p> -->
+              </b-col>
+              <b-col xs="6">
+                <h6 class="m-0">Moeda</h6>
+                <p class="value5">Metical</p>
+              </b-col>
+            </b-row>
+          </div>
+        </Widget>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col lg="4" xs="12">
+        <Widget class="widget-padding-md">
+          <b-row>
+            <b-col cols="10" md="8">
+              <h4 class="mt-0">Dados do cliente</h4>
+            </b-col>
+            <b-col cols="2" md="4">
+              <b-button v-b-modal.editar variant="success" class="mr-" size="xs"
+                ><i class="fa fa-edit"></i> Editar</b-button
+              >
+            </b-col>
+          </b-row>
+          <b-list-group>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-left"
+            >
+              Cliente:
+              <span>Muarucha Assane</span>
+            </b-list-group-item>
+
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center"
+            >
+              Endereco:
+              <span>Muarucha Assane</span>
+            </b-list-group-item>
+
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center"
+            >
+              Telefone:
+              <span>+258 84 xx xx xxx</span>
+            </b-list-group-item>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center"
+            >
+              Email:
+              <span>mmassene@pavulla.com</span>
+            </b-list-group-item>
+          </b-list-group>
+        </Widget>
+      </b-col>
+
+      <b-col lg="8" xs="12">
+        <Widget class="widget-padding-lg text-white">
+          <b-row>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Data</th>
+                  <th class="hidden-sm-down d-print-none">Consumo</th>
+
+                  <th class="hidden-sm-down d-print-none">Valor</th>
+                  <th>Multa</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2019/08/27</td>
+                  <td class="hidden-sm-down d-print-none">6</td>
+                  <td>260</td>
+                  <td class="hidden-sm-down d-print-none">100</td>
+                  <td>900</td>
+                  <td>
+                    <b-button to="/app/client/individual/detail/invoice" block variant="danger" size="sm">Pendente</b-button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2019/08/27</td>
+                  <td class="hidden-sm-down d-print-none">6</td>
+                  <td>260</td>
+                  <td class="hidden-sm-down d-print-none">100</td>
+                  <td>900</td>
+                  <td>
+                    <b-button block variant="danger" size="sm">Pendente</b-button>
+                  </td>
+                </tr>
+               <tr>
+                  <td>1</td>
+                  <td>2019/08/27</td>
+                  <td class="hidden-sm-down d-print-none">6</td>
+                  <td>260</td>
+                  <td class="hidden-sm-down d-print-none">100</td>
+                  <td>900</td>
+                  <td>
+                    <b-button block variant="success" size="sm">Pago</b-button>
+                  </td>
+                </tr>
+               <tr>
+                  <td>1</td>
+                  <td>2019/08/27</td>
+                  <td class="hidden-sm-down d-print-none">6</td>
+                  <td>260</td>
+                  <td class="hidden-sm-down d-print-none">100</td>
+                  <td>900</td>
+                  <td>
+                    <b-button block variant="success" size="sm">Pago</b-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </b-row>
+        </Widget>
+      </b-col>
+    </b-row>
+    <b-modal
+      id="editar"
+      size="lg"
+      title="Editar cliente"
+      body-bg-variant="white"
+      hide-header
+      hide-footer
+    >
+      <b-form>
+        <legend class="text-info">
+          <h5>
+            <i class="fa fa-user"></i>
+            <strong class="pl-2">Editar Cliente</strong>
+          </h5>
+        </legend>
+        <b-row>
+          <b-col md="4">
+            <b-form-group label="Contador" label-for="contador">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+          <b-col md="6">
+            <b-form-group label="Nome" label-for="search-field">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+
+          <b-col md="2">
+            <b-form-group label="NUIT" label-for="Nuit">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+
+          <b-col md="4">
+            <b-form-group label="Telefone" label-for="telefone">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+
+          <b-col md="8">
+            <b-form-group label="Email" label-for="email">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+
+          <b-col md="4">
+            <b-form-group label="Bairro" label-for="email">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+          <b-col md="4">
+            <b-form-group label="Quarteirao" label-for="email">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+          <b-col md="4">
+            <b-form-group label="Casa" label-for="email">
+              <b-row>
+                <b-col md="12">
+                  <b-form-input type="text" id="normal-field" />
+                </b-col>
+              </b-row>
+            </b-form-group>
+          </b-col>
+
+          <b-col md="12">
+            <b-form-group horizontal>
+              <b-button variant="gray" class="ml-0 mr-3">Cancelar</b-button>
+              <b-button variant="success" type="submit">Actualizar</b-button>
+            </b-form-group>
           </b-col>
         </b-row>
-      </div> -->
-    </div>
+      </b-form>
+    </b-modal>
+    <b-modal
+      id="imprimir"
+      size="lg"
+      title="Impimir Fatura"
+      body-bg-variant="white"
+      hide-footer
+    >
+      <Print />
+    </b-modal>
   </div>
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex';
-import Widget from '@/components/Widget/Widget';
-import MainChart from './components/MainChart/MainChart';
-import BigStat from './components/BigStat/BigStat';
-import Calendar from '../Visits/components/Calendar/Calendar';
-import TaskContainer from './components/TaskContainer/TaskContainer';
-import mock from './mock';
-
-import { Chart } from 'highcharts-vue';
+// import Print from "./components/print/Invoice";
+// import Skycon from "@/components/Skycon/Skycon";
+import Widget from "@/components/Widget/Widget";
+// import FlotCharts from "./components/flot-charts/FlotCharts";
+// import Nasdaq from "./components/nasdaq/Nasdaq";
+// import YearsMap from "./components/years-map/YearsMap";
+// import RealtimeTraffic from "./components/realtime-traffic/RealtimeTraffic";
+// import ChangesChart from "./components/changes-chart/ChangesChart";
 
 export default {
-  name: 'Dashboard',
+  name: "Widgets",
   components: {
-    Widget, MainChart, BigStat, Calendar, TaskContainer, highcharts: Chart
+    Widget,
+    // FlotCharts,
+    // Skycon,
+    // Nasdaq,
+    // YearsMap,
+    // RealtimeTraffic,
+    // ChangesChart,
+    // Print,
   },
   data() {
     return {
-      mock,
-      table: [{
-        id: 0,
-        name: 'Mark Otto',
-        email: 'ottoto@wxample.com',
-        product: 'ON the Road',
-        price: '$25 224.2',
-        date: '11 May 2017',
-        city: 'Otsego',
-        status: 'Sent',
-      },
-      {
-        id: 1,
-        name: 'Jacob Thornton',
-        email: 'thornton@wxample.com',
-        product: 'HP Core i7',
-        price: '$1 254.2',
-        date: '4 Jun 2017',
-        city: 'Fivepointville',
-        status: 'Sent',
-      },
-      {
-        id: 2,
-        name: 'Larry the Bird',
-        email: 'bird@wxample.com',
-        product: 'Air Pro',
-        price: '$1 570.0',
-        date: '27 Aug 2017',
-        city: 'Leadville North',
-        status: 'Pending',
-      },
-      {
-        id: 3,
-        name: 'Joseph May',
-        email: 'josephmay@wxample.com',
-        product: 'Version Control',
-        price: '$5 224.5',
-        date: '19 Feb 2018',
-        city: 'Seaforth',
-        status: 'Declined',
-      },
-      {
-        id: 4,
-        name: 'Peter Horadnia',
-        email: 'horadnia@wxample.com',
-        product: 'Let\'s Dance',
-        price: '$43 594.7',
-        date: '1 Mar 2018',
-        city: 'Hanoverton',
-        status: 'Sent',
-      }]
+      carouselFirstGroup: true,
+      flipFirstGroup: true,
+      animationInterval: null,
     };
   },
-  methods: {
-    ...mapActions('dashboard', ['receiveDataRequest']),
-    getRandomData() {
-      const arr = [];
-
-      for (let i = 0; i < 25; i += 1) {
-        arr.push(Math.random().toFixed(1) * 10);
-      }
-
-      return arr;
-    },
-  },
-  computed: {
-  ...mapState('dashboard', [
-      'visits',
-      'performance',
-      'server',
-      'revenue',
-      'mainChart',
-      'isReceiving',
-    ]),
-    donut() {
-      let {danger, info, primary} = this.appConfig.colors;
-      let series = [
-        {
-          name: 'Revenue',
-          data: this.revenue.map(s => {
-            return {
-              name: s.label,
-              y: s.data
-            }
-          })
-        }
-      ];
-      return {
-        chart: {
-          type: 'pie',
-          height: 120
-        },
-        credits: {
-          enabled: false
-        },
-        title: false,
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: false
-            },
-            borderColor: null,
-            showInLegend: true,
-            innerSize: 60,
-            size: 100,
-            states: {
-              hover: {
-                halo: {
-                  size: 1
-                }
-              }
-            }
-          }
-        },
-        colors: [danger, info, primary],
-        legend: {
-          align: 'right',
-          verticalAlign: 'middle',
-          layout: 'vertical',
-          itemStyle: {
-            color: '#495057',
-            fontWeight: 100,
-            fontFamily: 'Montserrat'
-          },
-          itemMarginBottom: 5,
-          symbolRadius: 0
-        },
-        exporting: {
-          enabled: false
-        },
-        series
-      };
-    }
-  },
   mounted() {
-    this.receiveDataRequest();
+    this.animationInterval = setInterval(() => {
+      this.slideWidget();
+      this.flipWidget();
+    }, 1000 * 4);
+  },
+  methods: {
+    flipWidget() {
+      this.flipFirstGroup = !this.flipFirstGroup;
+    },
+    slideWidget() {
+      this.carouselFirstGroup = !this.carouselFirstGroup;
+    },
+
+  
+
+  },
+  beforeDestroy() {
+    clearInterval(this.animationInterval);
   },
 };
 </script>
 
-<style src="./Dashboard.scss" lang="scss" />
+
+<style src="./DetailIndividual.scss" lang="scss" scoped />

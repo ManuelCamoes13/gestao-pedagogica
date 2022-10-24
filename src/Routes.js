@@ -23,7 +23,7 @@ import WidgetsPage from '@/pages/Widgets/Widgets';
 // import HighchartsPage from '@/pages/Charts/Highcharts/Highcharts';
 
 //Clientes
-import ClientIndividualPage from '@/pages/StaffPedagogico/Coordenador/Coordenador';
+import CoordenadorPage from '@/pages/StaffPedagogico/Coordenador/Coordenador';
 import Professor from '@/pages/StaffPedagogico/Professor/Professor';
 import PerfilProfessor from '@/pages/StaffPedagogico/Professor/PerfilProfessor';
 import ClientIndividualDetailPage from '@/pages/Client/Individual/Detail/Detail';
@@ -258,9 +258,9 @@ export default new Router({
         },
         // Client pages
         {
-          path: 'client/individual',
-          name: 'ClientIndividualPage',
-          component: ClientIndividualPage,
+          path: 'coordenador',
+          name: 'CoordenadorPage',
+          component: CoordenadorPage,
         },
         {
           path: 'client/company',

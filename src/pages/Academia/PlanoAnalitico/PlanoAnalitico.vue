@@ -1,16 +1,15 @@
 <template>
   <div class="tables-basic">
-    <b-row>
-      <b-col>
-    <h2 class="page-title"><span class="fw-semi-bold">Plano Analitico</span></h2>
-    </b-col>
-    <b-col>
-      <div class="d-flex">
-              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i>   Nova</b-button>
-              
-            </div>
-            </b-col>
-            </b-row>
+    
+
+            <h1 class="page-title">
+              Plano Analitico
+              <div class="float-right">
+                <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"
+                  ><i class="fa fa-plus"></i> ADICIONAR NOVO</b-button
+                >
+              </div>
+            </h1>
     <b-row>
       <b-col>
         <Widget
@@ -20,18 +19,17 @@
         <div class="clearfix">
             
              <div class="messageTableHeader">
-    <div>
-
-    </div>
-    <b-form-input placeholder="Procurar" size="sm" @input="search" />
+    <b-col class="">
+    <!-- <b-form-input placeholder="Procurar" size="sm" @input="search" /> -->
+    </b-col>
   </div>
           </div>
-          <div class="table-resposive">
-            <table class="table">
+          <div class="table-resposive ">
+            <table class="table  table-striped">
               <thead>
                 <tr>
                   <!-- <th>Contador</th> -->
-                  <th>Plano</th>
+                  <th>Nome</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,7 +58,7 @@
       
     </b-row>
    
-     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Novo Curso"  hide-footer>
+     <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Adicionar"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
         <span>{{ msg }}</span>
       </b-alert>
@@ -289,14 +287,12 @@ export default {
     },
 
  saveData() {
-  alert('ok')
       let token = localStorage.getItem("token");
       let config = {
         headers: {
           "authorization": token,
         },
       };
-      alert('ok')
       const data = {
          descricao:this.descricao,
          cadeira_id:this.selectedCadeira.id,
@@ -304,7 +300,6 @@ export default {
         //  planoanalitico_id:this.this.$router.params
          
       }
-      alert('ok')
       setTimeout(function () {
       }, 1000);
       http
