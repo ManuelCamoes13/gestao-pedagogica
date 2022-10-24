@@ -1,74 +1,17 @@
 <template>
   <div class="tables-basic">
    
-            <b-row>
-              <Widget>
-                  {{professor}}
-                  
-              </Widget>
-              <!-- {{cadeiras}} -->
-            </b-row>
-            <b-row>
-      <b-col>
-    <h2 class="page-title"><span class="fw-semi-bold"></span></h2>
-    </b-col>
-    <b-col>
-      <div class="d-flex">
-              <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"><i class="fa fa-plus"></i> Alocar Cadeiras</b-button>
-              
-            </div>
-            </b-col>
-            </b-row>
-    <b-row>
-      <b-col>
-        <Widget
-          customHeader 
+    <h1 class="page-title">
+      Perfil de
+      <small> {{professor.nome}} {{professor.apelido}}</small>
+      <div class="float-right">
+        <b-button v-b-modal.novo variant="inverse" class="mr-3" size="sm"
+          ><i class="fa fa-plus"></i> ALOCAR CADEIRAS</b-button
         >
-
-        <div class="clearfix">
-             <div class="messageTableHeader">
-    <div>
-
-    </div>
-    <b-form-input placeholder="Procurar" size="sm" @input="search" />
-  </div>
-          </div>
-          <div class="table-resposive">
-            <table class="table">
-              <thead>
-                <tr>
-                
-                  <th class="hidden-sm-down">Cadeira</th>
-                  <th class="hidden-sm-down">Curso</th>
-
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="cadeira in profcadeira"
-                 :key="cadeira.id">
-                  <td> {{cadeira.cadeira_descricao}}</td>
-                  <td> {{cadeira.curso_descricao}}</td>
-                  
-                  <td class="width-200">
-                    <b-button  variant="info" size="sm" @click="openUpdate(curso)">
-                      <i class="fa fa-edit"></i>
-                    </b-button>
-                    <b-button @click="deleteData(cadeira)" class="ml-3" variant="danger">
-                      <i class="fa fa-trash" ></i>
-                    </b-button>
-                     <b-button :to="{ name: 'CursoCadeira', params: { idCurso: curso.id } }" class="ml-3" variant="success">
-                      <i class="fa fa-eye" ></i>
-                    </b-button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-        </Widget>
-      </b-col>
-      
-    </b-row>
+      </div>
+    </h1>
+         
+   
    
      <b-modal ref="novo" id="novo" size="md" body-class="bg-white"  title="Adicionar Cadeira ao curso"  hide-footer>
         <b-alert show dismissible variant="danger" v-model="err">
@@ -90,7 +33,6 @@
               <v-select name="curso" :options="cadeiras" v-model="selectedCadeira" label="descricao">
 
               </v-select>
-{{selectedCadeira}}
              
             </b-form-group>
           </b-col>
@@ -211,7 +153,90 @@
         </div>
       </b-form>
    </b-modal>
+   <b-row>
+    <b-col lg="4" xs="12">
+      <Widget class="widget-padding-md">
+        <b-row>
+          <b-col cols="10" md="8">
+            <h4 class="mt-0">Dados do Professor</h4>
+          </b-col>
+          <b-col cols="2" md="4">
+            <b-button v-b-modal.editar variant="success" class="mr-" size="xs"
+              ><i class="fa fa-edit"></i> Editar</b-button
+            >
+          </b-col>
+        </b-row>
+        <b-list-group>
+          <b-list-group-item
+            class="d-flex justify-content-between align-items-left"
+          >
+            Nome:
+            <span>{{professor.nome}} {{professor.apelido}}</span>
+          </b-list-group-item>
 
+          <b-list-group-item
+            class="d-flex justify-content-between align-items-center"
+          >
+            Endereco:
+            <span>B.Nsalene</span>
+          </b-list-group-item>
+
+          <b-list-group-item
+            class="d-flex justify-content-between align-items-center"
+          >
+            Telefone:
+            <span>{{professor.telefone}}</span>
+          </b-list-group-item>
+          <b-list-group-item
+            class="d-flex justify-content-between align-items-center"
+          >
+            Email:
+            <span>{{professor.email}}</span>
+          </b-list-group-item>
+        </b-list-group>
+      </Widget>
+    </b-col>
+
+    <b-col lg="8" xs="12">
+      <Widget class="widget-padding-lg text-white">
+        <b-row>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Cadeira</th>
+                <th class="hidden-sm-down d-print-none">Curso</th>
+
+             
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cadeira in profcadeira"
+              :key="cadeira.id">
+                <td></td>
+                <td>{{cadeira.cadeira_descricao}}</td>
+                <td class="hidden-sm-down d-print-none">{{cadeira.curso_descricao}}</td>
+                
+                <td>
+                  <b-button  variant="info" size="sm" @click="openUpdate(curso)">
+                    <i class="fa fa-edit"></i>
+                  </b-button>
+                  <b-button @click="deleteData(cadeira)" class="ml-3" variant="danger">
+                    <i class="fa fa-trash" ></i>
+                  </b-button>
+                   <b-button :to="{ name: 'CursoCadeira', params: { idCurso: curso.id } }" class="ml-3" variant="success">
+                    <i class="fa fa-eye" ></i>
+                  </b-button>
+                </td>
+              </tr>
+            
+           
+            </tbody>
+          </table>
+        </b-row>
+      </Widget>
+    </b-col>
+  </b-row>
   </div>
 </template>
 
