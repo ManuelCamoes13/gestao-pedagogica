@@ -1,8 +1,8 @@
 <template>
   <div class="widgets-page">
     <h1 class="page-title">
-      Cliente
-      <small>Muarucha Assane</small>
+      Dashboard
+      <!-- <small>Muarucha Assane</small> -->
       <div class="float-right">
         <b-button v-b-modal.imprimir variant="success" class="mr-3" size="sm"
           ><i class="fa fa-print"></i> Imprimir</b-button
@@ -242,14 +242,14 @@
               class="d-flex justify-content-between align-items-left"
             >
               Cliente:
-              <span>Muarucha Assane</span>
+              <span>Manuel Camoes</span>
             </b-list-group-item>
 
             <b-list-group-item
               class="d-flex justify-content-between align-items-center"
             >
               Endereco:
-              <span>Muarucha Assane</span>
+              <span>B.Nsalene</span>
             </b-list-group-item>
 
             <b-list-group-item
@@ -262,7 +262,7 @@
               class="d-flex justify-content-between align-items-center"
             >
               Email:
-              <span>mmassene@pavulla.com</span>
+              <span>manuelcamoes13@gmail.com</span>
             </b-list-group-item>
           </b-list-group>
         </Widget>

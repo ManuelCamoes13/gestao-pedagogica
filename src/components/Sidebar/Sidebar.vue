@@ -15,13 +15,11 @@
         <NavLink
             :activeItem="activeItem"
             header="Dashboard"
-            link="/app/main"
+            link="/app/main/analytics"
             iconName="flaticon-home"
             index="main"
             isHeader
-            :childrenLinks="[
-          { header: 'Analiticos', link: '/app/main/analytics' },
-        ]"
+           
         />
 
         <NavLink
